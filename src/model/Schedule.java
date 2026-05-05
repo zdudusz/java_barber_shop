@@ -13,7 +13,8 @@ public class Schedule {
             LocalTime.of(15,0), LocalTime.of(16,0),
             LocalTime.of(17,0), LocalTime.of(18,0)
     );
-    private List<LocalTime> avaibleHours;
+
+    private List<LocalTime> avaibleHours;// horarios disponiveis
 
     public Schedule(){
         this.avaibleHours = new ArrayList<LocalTime>(FIXED_HOURS);
