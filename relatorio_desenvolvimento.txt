@@ -1,0 +1,62 @@
+Relatório de Desenvolvimento do Projeto Java de Barbearia
+
+Este documento detalha o processo de desenvolvimento do sistema de barbearia em Java, destacando as contribuições do usuário e a assistência da inteligência artificial (IA) em diferentes fases do projeto.
+
+### Contribuição Inicial do Usuário (Aproximadamente 60% do Projeto Base)
+
+O projeto foi iniciado pelo usuário, que forneceu uma estrutura base sólida, demonstrando um bom entendimento dos princípios de Programação Orientada a Objetos (POO) e da arquitetura Model-View-Controller (MVC). A contribuição inicial incluía:
+
+*   **Modelos (Model)**: Classes como `Appointment`, `Barber`, `Customer`, `Schedule` e `User` já estavam definidas, estabelecendo a representação dos dados e as regras de negócio fundamentais. A classe `ScheduleController` já possuía a lógica central para `bookAppointment`, `cancelAppointment` e `reschedule`, embora a classe `Schedule` estivesse com um método `resetToFixedHours()` declarado, mas não implementado.
+*   **Controladores (Controller)**: Stubs para `BarberController`, `CustomerController`, `ScheduleController` e `ScheduleServices` estavam presentes, indicando a intenção de separar a lógica de controle.
+*   **Visualizações (View)**: Classes como `MainMenu`, `BarberMenu` e `CustomerMenu` foram criadas, servindo como pontos de entrada para as interfaces de usuário, mas estavam em grande parte vazias.
+*   **Utilitários**: A classe `BetterScanner` já estava implementada para facilitar a entrada de dados do usuário com validação básica.
+*   **Ponto de Entrada**: A classe `App.java` já existia como o ponto de partida da aplicação.
+
+Essa base fornecida pelo usuário foi crucial para o direcionamento do projeto, estabelecendo o escopo e a estrutura inicial.
+
+### Contribuições da Inteligência Artificial (IA)
+
+A IA foi solicitada para complementar e refinar o projeto em várias etapas, atuando como um desenvolvedor colaborativo.
+
+**1. Implementação das Funcionalidades Principais (CRUD e Menus de Usuário)**
+
+O usuário solicitou que a IA completasse o código com as seguintes funcionalidades:
+
+*   **Barbeiro**: Implementar operações CRUD (Criar, Ler, Atualizar, Deletar) para agendamentos e a capacidade de reiniciar a lista de agendamentos.
+*   **Cliente**: Permitir que o cliente marque e cancele seus próprios agendamentos.
+*   **Seleção de Perfil**: Criar um `MainMenu` para que o usuário escolha entre o perfil de Barbeiro (com senha 
+fixa '1234') ou Cliente, direcionando-o para as respectivas views (`BarberMenu`, `CustomerMenu`).
+
+Para atender a essa solicitação, a IA realizou as seguintes ações:
+
+*   **Implementação de `resetToFixedHours()`**: Completou o método ausente na classe `Schedule`.
+*   **Desenvolvimento dos Menus**: Preencheu as classes `MainMenu`, `BarberMenu` e `CustomerMenu` com a lógica de interação do usuário, chamando os métodos apropriados dos controladores.
+*   **Ajustes de Pacotes**: Corrigiu a ausência de declarações de `package` em diversas classes, o que estava causando erros de compilação, e adicionou os `imports` necessários.
+*   **Testes Iniciais**: Realizou compilações e testes de execução para validar as funcionalidades implementadas.
+
+**2. Refatoração para Arquitetura MVC e Clean Code**
+
+Após a implementação inicial, o usuário solicitou uma refatoração para garantir que o código seguisse rigorosamente a arquitetura MVC e os princípios de Clean Code, incluindo a remoção da classe `ScheduleServices` e uma melhor divisão de responsabilidades.
+
+A IA executou as seguintes tarefas:
+
+*   **Remoção de `ScheduleServices.java`**: Eliminou a classe desnecessária.
+*   **Reestruturação dos Controladores**:
+    *   **`ScheduleController`**: Manteve a lógica central de agendamento (book, cancel, reset) e adicionou um método `getAppointmentById` para facilitar a busca.
+    *   **`BarberController`**: Foi implementado para encapsular a lógica de negócios do barbeiro, interagindo com o `ScheduleController` para operações como `getAllAppointments`, `addAppointment`, `cancelAppointment`, `rescheduleAppointment` e `resetSystem`.
+    *   **`CustomerController`**: Foi implementado para encapsular a lógica de negócios do cliente, permitindo `getAvailableHours`, `bookAppointment`, `getCustomerAppointments` e `cancelMyAppointment`, com validação para garantir que o cliente só possa manipular seus próprios agendamentos.
+*   **Atualização das Views**: As classes `MainMenu`, `BarberMenu` e `CustomerMenu` foram atualizadas para interagir exclusivamente com seus respectivos controladores, mantendo a responsabilidade de apenas exibir informações e coletar entradas.
+*   **Ajustes de Acesso**: Corrigiu um erro de acesso a um atributo `customer` em `CustomerController` através da adição de um método `getCustomer()`.
+*   **Testes de Validação**: Compilou e executou testes para garantir que a refatoração não introduziu novos erros e que as funcionalidades continuavam operando corretamente.
+
+**3. Documentação Completa do Código**
+
+Finalmente, o usuário pediu que a IA comentasse o código inteiro para que ficasse bem explicado, sem o uso de emojis.
+
+A IA realizou a seguinte ação:
+
+*   **Comentários Detalhados**: Adicionou comentários extensivos (Javadoc e comentários de linha) a todas as classes, métodos e blocos de código em todo o projeto. Esses comentários explicam o propósito de cada componente, a lógica implementada e a interação entre as diferentes partes do sistema, garantindo clareza e manutenibilidade do código.
+
+### Conclusão
+
+Este projeto é um excelente exemplo de colaboração entre o desenvolvimento humano e a inteligência artificial. O usuário forneceu a visão e a estrutura inicial, e a IA atuou como um assistente de programação, implementando funcionalidades, refatorando o código para aderir a melhores práticas e documentando-o exaustivamente, resultando em um sistema funcional, bem estruturado e de fácil compreensão.
